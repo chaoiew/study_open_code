@@ -1,3 +1,4 @@
+
 # OpenCode 高效沟通指南
 
 ## 1. 基础原则
@@ -97,3 +98,58 @@
 
 ### 利用会话上下文
 之前说过的不用重复，只补充当前步骤需要的信息。
+
+## 8. Markdown 消息格式
+
+### 常用标签
+
+| 标签 | 用途 | 示例 |
+|-----|------|------|
+| `` ` `` | 文件路径、变量名 | `aa.py`, `f(a, b)` |
+| ` ``` ` | 完整代码、错误信息 | 贴 stack trace |
+| `-` | 列表 | `- file: xxx.py` |
+| `>` | 关键约束 | `> 不要改 X` |
+| `#` | 分段结构 | 区分目标/约束/示例 |
+
+### 完整模板
+
+```markdown
+# 实现用户登录 API
+
+## 目标
+实现 `/api/login` 接口，返回 JWT token
+
+## 文件
+- `src/routes/auth.ts` (新增)
+- `src/middleware/validate.ts` (已有，需调用)
+
+## 约束
+> 不能新增依赖，只能用现有库
+- Python 3.11+
+- 遵循 `src/utils/` 里的错误处理模式
+
+## 示例
+```json
+POST /api/login
+{"email": "a@b.com", "password": "123"}
+→
+{"token": "eyJ...", "expires_in": 3600}
+```
+
+## 预期
+- 成功: 200 + token
+- 失败: 400 + `{"error": "Invalid credentials"}`
+```
+
+### 简单场景
+
+```markdown
+`aa.py` 第 8 行返回 `3`，应该返回 `4`
+```
+
+# study_open_code
+# study_open_code
+# 112313
+hello
+aaa
+
